@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Devika’s 16-Week Offer Quest</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fffcfd;--card:#fff;--ink:#5a4d6b;--mute:#9a8fa8;--line:#f9eef4;--p0:#fde8f0;--p1:#efe9fb;--p2:#e6f6ee;--p3:#fdf3e8;--acc:#f4b6cd;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+
+
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Nunito,system-ui,sans-serif}
+.w{max-width:760px;margin:0 auto;padding:18px 14px 60px}
+h1,h2,summary b.t{font-family:Fredoka,Nunito,sans-serif;font-weight:600}
+.hero{background:linear-gradient(135deg,var(--p0),var(--p1) 55%,var(--p2));border-radius:28px;padding:22px 20px;text-align:center}
+.hero h1{margin:0 0 4px;font-size:clamp(26px,6vw,36px);line-height:1.15}
+.hero p{margin:0;color:var(--ink);opacity:.85}
+.bar{height:16px;border-radius:99px;background:color-mix(in srgb,var(--card) 70%,transparent);overflow:hidden;margin:14px 0 6px}
+.bar i{display:block;height:100%;width:0;background:var(--acc);border-radius:99px;transition:width .4s}
+.stat{font-weight:800}
+.card{background:var(--card);border:2px solid var(--line);border-radius:22px;padding:16px 18px;margin:14px 0}
+.card h2{margin:0 0 8px;font-size:20px}
+.card ul{margin:6px 0 0;padding-left:20px}.card li{margin:3px 0}
+.ph{font-family:Fredoka,Nunito,sans-serif;font-size:18px;margin:26px 4px 6px;display:flex;gap:8px;align-items:center}
+details{border-radius:22px;margin:10px 0;background:color-mix(in srgb,var(--c) 45%,var(--card));border:2px solid var(--c);overflow:hidden}
+summary{list-style:none;cursor:pointer;padding:14px 16px;display:flex;align-items:center;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary .e{font-size:26px}summary .m{flex:1;min-width:0}
+summary b.t{display:block;font-size:17px;line-height:1.2}
+summary small{color:var(--mute);font-weight:600}
+.pill{background:var(--card);border-radius:99px;padding:3px 11px;font-weight:800;font-size:13px;white-space:nowrap}
+.body{background:var(--card);padding:6px 14px 14px}
+.r{display:flex;gap:10px;align-items:flex-start;padding:9px 4px;border-bottom:1px dashed var(--line);cursor:pointer}
+.r:last-of-type{border-bottom:0}
+.r input{width:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--acc)}
+.r span{flex:1}.r input:checked+span{opacity:.5}
+.d{font-weight:800;color:color-mix(in srgb,var(--acc) 65%,var(--ink))}
+.qa{margin:2px 0 0;padding-left:18px;color:var(--mute);font-size:14.5px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:10px 4px 0}
+.chips a,.res a{background:color-mix(in srgb,var(--c,var(--p1)) 55%,var(--card));color:var(--ink);text-decoration:none;font-weight:800;font-size:13.5px;border-radius:99px;padding:5px 12px}
+.res{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px}
+.res a{border-radius:14px;display:block;padding:9px 12px}.res small{display:block;font-weight:600;color:var(--mute)}
+button{font:inherit;font-weight:800;border:0;border-radius:99px;padding:9px 18px;background:var(--p1);color:var(--ink);cursor:pointer}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+</style></head><body><div class="w">
+<div class="hero"><h1>🎀 Devika’s 16-Week Offer Quest 🎀</h1><p>Backend Engineer → 15-18 LPA · 1-1.5 hrs a day</p>
+<div class="bar"><i id="pb"></i></div><div class="stat" id="ps">0%</div></div>
+
+<div class="card"><h2>🧸 Your daily routine</h2><ul>
+<li><b>Mon-Fri (75-90 min):</b> 🍓 DSA 45 min (try 25 min, then read the hint, then re-code from memory) + 🌷 Theory 30-40 min (read or watch, then write 3-5 Q&amp;As in your own words)</li>
+<li><b>Saturday (~2 hrs):</b> 🐰 Redo the problems you failed + 2-3 new ones</li>
+<li><b>Sunday (~1.5 hrs):</b> 🎀 Answer the week’s questions out loud, like a real interview</li></ul>
+<ul><li>Do DSA in Java. Keep a log: problem, pattern, what tripped you up. Redo struggles after 1 week.</li>
+<li>Behind schedule? Push everything back a few days. Never cram.</li></ul></div>
+
+<div id="weeks"></div>
+
+<div class="card"><h2>🍬 All resources</h2><div class="res" id="res"></div></div>
+<p style="text-align:center"><button id="rs">Reset all progress</button></p>
+</div>
+<script>
+var R={nc:['NeetCode 150','Problem list + video solutions','https://neetcode.io/practice'],st:['Striver SDE Sheet','Alternate DSA sheet','https://takeuforward.org'],bz:['Baeldung','Java and Spring articles','https://www.baeldung.com'],sp:['Spring Guides','Official step-by-step guides','https://spring.io/guides'],ul:['Use The Index, Luke','Free SQL indexing book','https://use-the-index-luke.com'],kf:['Confluent Kafka courses','Free Kafka 101','https://developer.confluent.io/courses/'],bb:['ByteByteGo','System design (Alex Xu)','https://bytebytego.com'],gs:['Gaurav Sen','System design videos','https://www.youtube.com/@gkcs'],rg:['Refactoring Guru','Design patterns, simply explained','https://refactoring.guru/design-patterns'],cc:['Concept &amp;&amp; Coding','LLD videos','https://www.youtube.com/@ConceptandCoding'],dk:['Docker Get Started','Official tutorial','https://docs.docker.com/get-started/'],k8:['Kubernetes Basics','Official tutorial','https://kubernetes.io/docs/tutorials/kubernetes-basics/'],pr:['Pramp','Free peer mock interviews','https://www.pramp.com'],lc:['LeetCode','Timed practice','https://leetcode.com']};
+var PH=[['Phase 1 · Foundations (Weeks 1-4)','🎀'],['Phase 2 · Core skills (Weeks 5-8)','🫐'],['Phase 3 · Distributed &amp; design (Weeks 9-12)','🍀'],['Phase 4 · Interview mode (Weeks 13-16)','🍑']];
+var M=['Timed Medium #1 (40 min)','Timed Medium #2 (40 min)','Timed Medium #3 (40 min)','Revise your weakest pattern','Redo a hard-marked problem'];
+var W=[
+[0,'Arrays &amp; HashMap','🍓',['Contains Duplicate','Two Sum','Valid Anagram','Group Anagrams','Top K Frequent Elements','Product of Array Except Self','Longest Consecutive Sequence'],['HashMap: hashing, buckets, collisions','HashMap: resizing and treeification','ArrayList vs LinkedList','equals/hashCode contract','Fail-fast iterators, HashSet, TreeMap'],['How does HashMap work internally?','Override equals but not hashCode: what breaks?','Why is String a good HashMap key?'],'nc bz'],
+[0,'Two pointers &amp; sliding window','🫧',['Valid Palindrome','3Sum','Container With Most Water','Best Time to Buy and Sell Stock','Longest Substring Without Repeating','Longest Repeating Character Replacement'],['Streams and lambdas','Functional interfaces','Optional','ConcurrentHashMap','Comparable vs Comparator'],['How is ConcurrentHashMap thread-safe?','map vs flatMap?','When do you use Optional?'],'nc bz'],
+[0,'Stack, binary search &amp; the JVM','🧸',['Valid Parentheses','Min Stack','Daily Temperatures','Binary Search','Search in Rotated Sorted Array','Find Minimum in Rotated Sorted Array','Koko Eating Bananas'],['JVM memory: heap, stack, metaspace','Garbage collection basics','String pool and immutability','Checked vs unchecked exceptions','Four OOP pillars with project examples'],['How does garbage collection work?','Why is String immutable?','What causes OutOfMemoryError?'],'nc bz'],
+[0,'Linked lists &amp; threads','🍡',['Reverse Linked List','Merge Two Sorted Lists','Linked List Cycle','Reorder List','Remove Nth Node From End','LRU Cache'],['Thread lifecycle','synchronized','volatile and happens-before','Race conditions and deadlock','Code a producer-consumer'],['synchronized vs volatile?','How do you detect and avoid deadlock?','Race condition example from your project?'],'nc bz'],
+[1,'Trees &amp; executors','🌷',['Invert Binary Tree','Maximum Depth of Binary Tree','Same Tree','Level Order Traversal','Validate BST','Kth Smallest in BST','Lowest Common Ancestor','Diameter of Binary Tree'],['ExecutorService','Thread pool types and sizing','Callable and Future','CompletableFuture','ReentrantLock and atomics'],['How do you size a thread pool?','Why not create threads manually?','Future vs CompletableFuture?'],'nc bz'],
+[1,'Heaps, backtracking &amp; Spring','🐥',['Kth Largest Element','Top K Frequent (heap version)','Merge K Sorted Lists','Subsets','Combination Sum','Permutations'],['IoC and dependency injection','Bean scopes and lifecycle','AOP and proxies','Auto-configuration','@Transactional and its pitfalls'],['How does Spring Boot auto-configuration work?','Why might @Transactional not work?','Constructor vs field injection?'],'nc sp bz'],
+[1,'Graphs &amp; JPA','🦋',['Number of Islands','Clone Graph','Max Area of Island','Course Schedule','Rotting Oranges'],['The N+1 problem','Lazy vs eager loading','JPA first- and second-level cache','Entity states','Optimistic vs pessimistic locking'],['What is N+1 and how do you fix it?','What does optimistic locking do?','Lazy vs eager: trade-offs?'],'nc bz ul'],
+[1,'1-D DP &amp; databases','🍯',['Climbing Stairs','House Robber','Coin Change','Longest Increasing Subsequence','Word Break','Decode Ways'],['ACID','Isolation levels','How B-tree indexes work','Composite indexes and column order','EXPLAIN and your optimization story'],['Walk through your 20-30% SQL optimization','When does an index NOT help?','READ COMMITTED vs REPEATABLE READ?'],'nc ul'],
+[2,'Intervals, tries &amp; Kafka','🐰',['Merge Intervals','Insert Interval','Implement Trie','Unique Paths','Longest Common Subsequence'],['Kafka: topics and partitions','Consumer groups and offsets','Rebalancing and ordering','Delivery semantics and idempotency','Retries and dead-letter queues'],['Consumer crashes mid-batch: what happens?','How do you guarantee ordering?','How did you handle retries at ~27K messages a day?'],'kf nc'],
+[2,'Revision &amp; distributed systems','🌈',['Redo log problem set 1','Redo log problem set 2','Redo log problem set 3','Timed mixed Medium (40 min)','Timed mixed Medium (40 min)'],['CAP theorem and consistency','Saga and outbox patterns','Circuit breaker and rate limiting','Redis caching: cache-aside, TTL','REST best practices and API versioning'],['Why use the outbox pattern?','Keep two services consistent without 2PC?','Cache-aside vs write-through?'],'kf bb gs'],
+[2,'System design 1','🏰',M,['The design framework: requirements to bottlenecks','Design a URL shortener','Design a rate limiter','Back-of-envelope estimation','Redo and review both designs'],['Design a URL shortener end to end','Rate limiter: which algorithms?','How do you estimate QPS and storage?'],'bb gs lc'],
+[2,'System design 2 &amp; LLD','🧁',M,['Design a notification system','Design a hotel reservation system (double booking!)','SOLID principles','Factory, Builder, Singleton','Strategy, Observer + parking lot'],['How do you prevent double booking?','Explain SOLID with a real example','Strategy vs Factory: when each?'],'bb gs rg cc'],
+[3,'LLD 2 &amp; behavioral','🦄',M,['LLD: BookMyShow seat booking','LLD: LRU Cache','STAR stories 1-2 (release-blocking defect, becoming acting lead)','STAR stories 3-5 (P1 incident, Kafka decision, mentoring)','Update your resume'],['Design BookMyShow seat booking','Implement an LRU Cache','Tell me about leading without the title'],'cc rg lc'],
+[3,'Platform refresher &amp; first mock','🐳',M,['Docker','Kubernetes: pods and deployments','ConfigMaps, secrets, rollouts','CI/CD, AWS S3 and IAM','JUnit, Mockito, SonarQube'],['Pod vs Deployment?','How does a rolling update work?','Walk through your CI/CD pipeline'],'dk k8 pr'],
+[3,'Apply &amp; mock, round 1','💌',['1 problem: your weakest pattern','1 problem: a random Medium','1 problem: a tree or graph','1 problem: a DP','1 problem: timed, 30 min'],['Mock interview and review','Apply to 5 roles','Send referral messages','Revise Java and concurrency notes','Revise Kafka and database notes'],['Pitch yourself in 90 seconds','Biggest production incident you solved?','Why are you leaving Accenture?'],'pr lc'],
+[3,'Apply &amp; mock, round 2','⭐',['1 problem: your weakest pattern','1 problem: a random Medium','1 problem: a tree or graph','1 problem: a DP','1 problem: timed, 30 min'],['Mock interview and review','Apply to 5 more roles','Revise system design notes','Revise Spring and JPA notes','Reflect and plan next steps'],['Recap your last DSA mock','Recap your last system design mock','Which topic still feels shaky?'],'pr lc']
+];
+var D=['Mon','Tue','Wed','Thu','Fri'],S={},KEY='devika-quest';
+try{S=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){S={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function row(k,h,t){return '<label class="r"><input type="checkbox" data-k="'+k+'"'+(S[k]?' checked':'')+'><span>'+h+t+'</span></label>'}
+var out='',lastP=-1;
+W.forEach(function(w,n){
+ if(w[0]!=lastP){lastP=w[0];out+='<div class="ph">'+PH[lastP][1]+' '+PH[lastP][0]+'</div>'}
+ var h='<details style="--c:var(--p'+w[0]+')" data-n="'+n+'"><summary><span class="e">'+w[2]+'</span><span class="m"><b class="t">Week '+(n+1)+' · '+w[1]+'</b><small>12 tasks</small></span><span class="pill">0/12</span></summary><div class="body">';
+ for(var i=0;i<5;i++){
+  var ds=w[3].filter(function(_,j){return j%5==i}).join(' + ');
+  h+=row(n+'-'+i+'a','<span class="d">'+D[i]+' 🍓 DSA (45 min):</span> ',ds);
+  h+=row(n+'-'+i+'b','<span class="d">'+D[i]+' 🌷 Theory (30-40 min):</span> ',w[4][i]);
+ }
+ h+=row(n+'-sat','<span class="d">Sat 🐰 (~2 hrs):</span> ','Redo this week’s failed problems, then 2-3 fresh ones');
+ h+=row(n+'-sun','<span class="d">Sun 🎀 (~1.5 hrs):</span> ','Answer out loud (record yourself!)<ul class="qa">'+w[5].map(function(q){return '<li>'+q+'</li>'}).join('')+'</ul>');
+ h+='<div class="chips">'+w[6].split(' ').map(function(k){return '<a style="--c:var(--p'+w[0]+')" href="'+R[k][2]+'" target="_blank" rel="noopener">'+R[k][0]+'</a>'}).join('')+'</div></div></details>';
+ out+=h;
+});
+document.getElementById('weeks').innerHTML=out;
+document.getElementById('res').innerHTML=Object.keys(R).map(function(k){return '<a href="'+R[k][2]+'" target="_blank" rel="noopener">'+R[k][0]+'<small>'+R[k][1]+'</small></a>'}).join('');
+function upd(){
+ var tot=0,done=0,first=-1;
+ document.querySelectorAll('details').forEach(function(d){
+  var bs=d.querySelectorAll('input'),c=0;bs.forEach(function(b){if(b.checked)c++});
+  tot+=bs.length;done+=c;
+  d.querySelector('.pill').textContent=(c==bs.length?'🎉 ':'')+c+'/'+bs.length;
+  if(first<0&&c<bs.length)first=+d.dataset.n;
+ });
+ var p=Math.round(done*100/tot);
+ document.getElementById('pb').style.width=p+'%';
+ document.getElementById('ps').textContent=p+'% · '+done+' of '+tot+' tasks done'+(p==100?' · You did it, Devika! 🎉':'');
+ return first;
+}
+document.getElementById('weeks').addEventListener('change',function(e){var k=e.target.dataset.k;if(k){S[k]=e.target.checked;save();upd()}});
+var f=upd();var op=document.querySelector('details[data-n="'+(f<0?15:f)+'"]');if(op)op.open=true;
+var rs=document.getElementById('rs'),armed=false;
+rs.onclick=function(){if(!armed){armed=true;rs.textContent='Tap again to confirm reset';setTimeout(function(){armed=false;rs.textContent='Reset all progress'},3500);return}
+ S={};save();document.querySelectorAll('input[data-k]').forEach(function(b){b.checked=false});upd();armed=false;rs.textContent='Reset all progress'};
+</script></body></html>
